@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-
+import { BehaviorSubject } from 'rxjs';
+import { Employee } from './models/Employee';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EmployeeService {
-
-  constructor() { }
+  constructor() {}
+  employees = new BehaviorSubject<Employee>();
 }
