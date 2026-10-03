@@ -19,6 +19,7 @@ export class EmployeeService {
     return this.employees.asObservable();
   }
   addEmployee(e: Employee) {
+    e.id = Date.now();
     const current = this.employees.value;
     return this.employees.next([...current, e]);
   }
