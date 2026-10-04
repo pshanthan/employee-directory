@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EmployeeService } from '../employee.service';
 import { BehaviorSubject } from 'rxjs';
+import { Employee } from '../models/Employee';
 
 @Component({
   selector: 'app-form',
@@ -31,4 +32,5 @@ export class FormComponent {
       }),
     },
   ]);
+  onSubmit() {}
 }
