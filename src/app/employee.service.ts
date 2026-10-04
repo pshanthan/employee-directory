@@ -21,10 +21,10 @@ export class EmployeeService {
   addEmployee(e: Employee) {
     e.id = Date.now();
     const current = this.employees.value;
-    return this.employees.next([...current, e]);
+    this.employees.next([...current, e]);
   }
   updateEmployee(e: Employee) {
     const current = this.employees.value;
-    this.employees.next([...current, e]);
+    current.map((p) => (p.id === e.id ? e : p));
   }
 }
