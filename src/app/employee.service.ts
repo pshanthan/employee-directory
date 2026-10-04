@@ -25,6 +25,7 @@ export class EmployeeService {
   }
   updateEmployee(e: Employee) {
     const current = this.employees.value;
-    current.map((p) => (p.id === e.id ? e : p));
+    const nextList = current.map((p) => (p.id === e.id ? e : p));
+    this.employees.next(nextList);
   }
 }
