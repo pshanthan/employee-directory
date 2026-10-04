@@ -1,6 +1,7 @@
-<form [formGroup]="employeeForm">
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
   <input formControlName="name" />
   <input formControlName="department" />
   <input formControlName="salary" />
   <input formControlName="active" />
+  <button type="submit">Submit</button>
 </form>
