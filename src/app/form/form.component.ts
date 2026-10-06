@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -15,13 +15,13 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './form.component.html',
   styleUrl: './form.component.css',
 })
-export class FormComponent {
+export class FormComponent implements OnInit {
   constructor(
     private employeeService: EmployeeService,
     private activatedRoute: ActivatedRoute,
   ) {}
 
-  id: number | null = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+  editingId: number | null = null;
 
   employeeForm = new FormGroup({
     name: new FormControl('', {
@@ -41,6 +41,13 @@ export class FormComponent {
       validators: Validators.required,
     }),
   });
+
+  ngOnInit(): void {
+    const idParam = this.activatedRoute.snapshot.paramMap.get('id');
+    if (idParam) {
+      this.editingId = Number(idParam);
+    }
+  }
   onSubmit() {
     const raw = this.employeeForm.getRawValue();
     const emp: Employee = {
