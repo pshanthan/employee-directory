@@ -16,6 +16,6 @@ export class ListComponent implements OnInit {
     this.getEmployees();
   }
   getEmployees() {
-    this.employeeService.getEmployees().subscribe((e) => e === this.employees);
+    this.employeeService.getEmployees().subscribe((e) => (e = this.employees));
   }
 }
