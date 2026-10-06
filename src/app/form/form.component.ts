@@ -6,7 +6,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { EmployeeService } from '../employee.service';
-import { BehaviorSubject } from 'rxjs';
 import { Employee } from '../models/Employee';
 
 @Component({
@@ -35,5 +34,14 @@ export class FormComponent {
       validators: Validators.required,
     }),
   });
-  onSubmit() {}
+  onSubmit() {
+    const raw = this.employeeForm.getRawValue();
+    const emp: Employee = {
+      name: raw.name,
+      department: raw.department,
+      salary: Number(raw.salary),
+      active: Boolean(raw.active),
+    };
+    this.employeeService.addEmployee(emp);
+  }
 }
