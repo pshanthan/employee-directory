@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../models/Employee';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -15,7 +16,13 @@ import { Employee } from '../models/Employee';
   styleUrl: './form.component.css',
 })
 export class FormComponent {
-  constructor(private employeeService: EmployeeService) {}
+  constructor(
+    private employeeService: EmployeeService,
+    private activatedRoute: ActivatedRoute,
+  ) {}
+
+  id: number | null = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+
   employeeForm = new FormGroup({
     name: new FormControl('', {
       nonNullable: true,
