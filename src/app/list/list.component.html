@@ -1,3 +1,4 @@
 <div *ngFor="let e of employees">
   <div>{{ e.name }} - {{ e.department }} - {{ e.salary }} - {{ e.active }}</div>
+  <button [routerLink]="['/edit', e.id]">Edit</button>
 </div>
